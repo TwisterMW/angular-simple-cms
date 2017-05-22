@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <svg class="glyph stroked pen tip"><use xlink:href="#stroked-pen-tip"/></svg>
+                {{ vm.entry.titulo }} <span class="text-primary"><small>por <strong>{{ vm.entry.author }}</strong></small></span>
+
+                <div class="floating-date">
+                    {{ vm.entry.fecha_publicacion }}
+                </div>
+            </div>
+            <div class="panel-body">
+                <div id="image-container" class="image-container"></div><hr />
+                <div class="row">
+                    <div class="col-md-12" ng-bind-html="vm.entry.post"></div>
+                </div>
+                <hr />
+                <button ng-show="user.role === '1'" type="button" class="btn btn-danger" ng-click="vm.deleteEntry()">
+                    Borrar entrada
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

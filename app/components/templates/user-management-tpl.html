@@ -1,0 +1,82 @@
+<div class="row">
+    <!-- Lista de usuarios -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <svg class="glyph stroked clipboard with paper">
+                    <use xlink:href="#stroked-clipboard-with-paper"></use>
+                </svg>
+                Lista de usuarios
+            </div>
+            <div class="panel-body fill-height">
+                <ul class="todo-list">
+                    <li class="todo-list-item" ng-repeat="user in vm.userList" ng-dblclick="vm.selectUser(user.username)">
+                        <div class="checkbox">
+                            <label for="checkbox">{{ user.name }}</label>
+                        </div>
+                        <div class="pull-right action-buttons" ng-show="vm.isAllowed">
+                            <a ng-click="vm.deleteUser(user.id)" class="trash"><svg class="glyph stroked trash"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#stroked-trash"></use></svg></a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="row" ng-show="vm.userList.length === 0">
+                    <div class="col-md-12 text-info"><br />No hay más usuarios</div>
+                </div>
+            </div>
+            <div class="panel-footer" ng-show="user.role === '1'">
+                <button type="button" class="btn btn-success" ng-click="vm.addUser()">
+                    Añadir usuario
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="sendNotificationArea" class="row">
+    <div ng-class="{'col-md-7': user.role === '1', 'col-md-12': user.role !== '1'}">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <svg class="glyph stroked email">
+                    <use xlink:href="#stroked-email"></use>
+                </svg>
+                Enviar notificaciones
+                <div class="float-right text-danger" ng-show="vm.userList.length === 0">
+                    <small>No hay usuarios</small>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form name="sendNotificationForm">
+                    <div class="form-group" tooltip-placement="top" uib-tooltip="Haz doble click en el usuario de la lista superior al que desees enviar un correo">
+                        <label>Usuario destinatario:</label>
+                        <input type="email" class="form-control" ng-model="vm.notification.user" required disabled />
+                    </div>
+                    <div class="form-group">
+                        <label>Asunto</label>
+                        <input type="text" class="form-control" ng-model="vm.notification.subject" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje</label>
+                        <textarea class="form-control textarea" rows="5" ng-model="vm.notification.message" required></textarea>
+                    </div>
+                    <hr />
+                    <button type="button" class="btn btn-success" ng-disabled="sendNotificationForm.$invalid" ng-click="vm.sendMessage()">
+                        Enviar correo
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Conexiones de usuario -->
+    <div class="col-md-5" ng-show="user.role === '1'">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <svg class="glyph stroked line graph">
+                    <use xlink:href="#stroked-line-graph"></use>
+                </svg>
+                Conexiones de usuario
+            </div>
+            <div class="panel-body padded-100">
+                <canvas id="userConnChart" class="chart chart-doughnut" chart-options="vm.chartOptions" chart-data="vm.chartValues" chart-labels="vm.chartLabels"></canvas>
+            </div>
+        </div>
+    </div>
+</div>

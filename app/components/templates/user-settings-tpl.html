@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <svg class="glyph stroked male user"><use xlink:href="#stroked-male-user"/></svg>
+                Configuración de usuario
+
+                <div class="floating-date">
+                    {{ vm.entry.fecha_publicacion }}
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form name="mailChangeForm" ng-submit="vm.changeMail()">
+                            <div class="form-group">
+                                <label>Cambiar dirección de correo</label>
+                                <input type="email" class="form-control" ng-model="vm.newEmail" required />
+                            </div>
+
+                            <button type="submit" class="btn btn-success" ng-disabled="mailChangeForm.$invalid">
+                                Actualizar email
+                            </button>
+                        </form>
+                        <hr />
+                        <form name="passChangeForm" ng-submit="vm.changePwd()">
+                            <label>Cambio de contraseña</label>
+                            <div class="form-group">
+                                <label><small>Contraseña antigua</small></label>
+                                <input type="password" class="form-control" placeholder="Contraseña antigua" ng-model="vm.newPwd.old" />
+                            </div>
+                            <div class="form-group">
+                                <label><small>Contraseña nueva</small></label>
+                                <input type="password" class="form-control" placeholder="Contraseña nueva" ng-model="vm.newPwd.new" minlength="8" />
+                            </div>
+                            <div class="form-group">
+                                <label><small>Repite contraseña</small></label>
+                                <input type="password" class="form-control" placeholder="Repite contraseña" ng-model="vm.newPwd.newRepeat" required pw-check="vm.newPwd.new" />
+                            </div>
+
+                            <button type="submit" class="btn btn-success" ng-disabled="passChangeForm.$invalid">
+                                Actualizar contraseña
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

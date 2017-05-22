@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>
+                Añadir entrada
+            </div>
+            <div class="panel-body">
+                <form name="addEntryForm">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Autor</label>
+                                        <input type="text" class="form-control" ng-value="vm.user.name" disabled />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Fecha</label>
+                                        <input type="text" class="form-control" ng-value="vm.currentDate" disabled />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Título de la publicación</label>
+                                        <input type="text" class="form-control" ng-model="vm.entry.title" placeholder="Título de la publicación" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label>Imágen de la entrada</label>
+                                <div id="image-picker" class="image-picker" ng-click="vm.selectImage()"></div>
+                                <input id="entryImage" type="file" class="hidden" ng-model="vm.entry.image" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label>Introduce el contenido de tu entrada:</label>
+                            <textarea id="entryPost" ng-model="vm.entry.post"></textarea>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <button type="button" class="btn btn-success" ng-disabled="addEntryForm.$invalid" ng-click="vm.addEntry()">
+                        Añadir entrada
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

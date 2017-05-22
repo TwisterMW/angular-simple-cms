@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h3 class="modal-title">Añadir nuevo usuario</h3>
+</div>
+<form name="userAddForm" novalidate>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" ng-model="vm.name" required />
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="Correo electrónico" ng-model="vm.email" required />
+        </div>
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" name="password" class="form-control" placeholder="Contraseña" ng-model="vm.password" required />
+        </div>
+        <div class="form-group">
+            <label>Repetir contraseña</label>
+            <input type="password" class="form-control" placeholder="Repite la contraseña" ng-model="vm.passwordRepeat" required pw-check="vm.password" minlength="8" />
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="isAdmin" ng-model="vm.isAdmin" /> <label for="isAdmin" class="text-success"><small>Es administrador</small></label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-disabled="userAddForm.$invalid" ng-click="vm.addUser()">Añadir</button>
+        <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancelar</button>
+    </div>
+</form>
