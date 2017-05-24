@@ -69,3 +69,12 @@ After that you need to configure the database access constants on 'backend/db/db
 You can also configure the mail constants in order to set up the PHPMailer integrated library in order to be able to send emails through the application.
 
 For doing this you need to edit 'backend/lib/mailer-constants.php' file with the proper values on each constant.
+
+### Deploying to int
+In order to deploy the CMS you need to generate the project after you configured the endpoint for webservices by doing: 
+
+```$ grunt release:int```
+
+Then you need to copy the 'backend' folder inside 'dist' generated folder and set up the backend constants for database and mailing.
+
+Your 'dist' folder will be then a capable CMS for integrate it with any website and mantain a blog style section updated.
